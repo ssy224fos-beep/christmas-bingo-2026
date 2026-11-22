@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" role="img" aria-label="Christmas tree with gifts illustration">
+<rect width="320" height="480" rx="28" fill="#144935"/>
+<rect x="143" y="311" width="34" height="77" rx="8" fill="#8f623d"/>
+<path d="M160 54l-58 88h35l-55 79h37l-44 70h170l-44-70h37l-55-79h35z" fill="#2f7b4d" stroke="#1c5638" stroke-width="8" stroke-linejoin="round"/>
+<path d="M160 44l11 24h27l-22 16 9 27-25-15-24 15 8-27-21-16h27z" fill="#ffd96a" stroke="#fff2be" stroke-width="4" stroke-linejoin="round"/>
+<g fill="#f7d56c"><circle cx="160" cy="118" r="9"/><circle cx="124" cy="155" r="8"/><circle cx="198" cy="161" r="8"/><circle cx="98" cy="213" r="8"/><circle cx="162" cy="217" r="9"/><circle cx="221" cy="218" r="8"/><circle cx="123" cy="274" r="8"/><circle cx="197" cy="274" r="8"/></g>
+<path d="M109 129c24 14 74 14 98 0M96 192c31 17 98 17 129 0M85 255c36 20 129 20 165 0" fill="none" stroke="#d74254" stroke-width="6" stroke-linecap="round"/>
+<g>
+<rect x="52" y="354" width="62" height="48" rx="8" fill="#d74254"/><rect x="77" y="354" width="12" height="48" fill="#f7e3a1"/><rect x="52" y="372" width="62" height="12" fill="#f7e3a1"/>
+<path d="M84 354c0-16 19-18 23-7 8-9 24-6 24 8-1 12-13 17-23 17-12 0-24-5-24-18z" fill="#f7e3a1"/>
+<rect x="130" y="362" width="56" height="40" rx="8" fill="#f7e3a1"/><rect x="152" y="362" width="10" height="40" fill="#2f7b4d"/><rect x="130" y="377" width="56" height="10" fill="#2f7b4d"/>
+<path d="M158 362c0-14 16-16 20-7 8-7 20-5 20 7 0 10-10 15-20 15s-20-5-20-15z" fill="#2f7b4d"/>
+<rect x="201" y="344" width="67" height="58" rx="8" fill="#5a9dde"/><rect x="228" y="344" width="13" height="58" fill="#fff4c7"/><rect x="201" y="367" width="67" height="13" fill="#fff4c7"/>
+<path d="M234 344c0-18 22-19 27-8 9-10 28-6 28 8 0 13-15 19-27 19-14 0-28-6-28-19z" fill="#fff4c7"/>
+</g>
+<g fill="#ffe599" opacity=".95"><circle cx="49" cy="110" r="5"/><circle cx="273" cy="126" r="5"/><circle cx="40" cy="209" r="4"/><circle cx="282" cy="245" r="5"/><circle cx="70" cy="301" r="5"/><circle cx="256" cy="311" r="4"/><circle cx="61" cy="430" r="5"/><circle cx="261" cy="425" r="6"/></g>
+</svg>
