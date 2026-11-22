@@ -1,17 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" role="img" aria-label="Christmas tree with gifts illustration">
-<rect width="320" height="480" rx="28" fill="#144935"/>
-<rect x="143" y="311" width="34" height="77" rx="8" fill="#8f623d"/>
-<path d="M160 54l-58 88h35l-55 79h37l-44 70h170l-44-70h37l-55-79h35z" fill="#2f7b4d" stroke="#1c5638" stroke-width="8" stroke-linejoin="round"/>
-<path d="M160 44l11 24h27l-22 16 9 27-25-15-24 15 8-27-21-16h27z" fill="#ffd96a" stroke="#fff2be" stroke-width="4" stroke-linejoin="round"/>
-<g fill="#f7d56c"><circle cx="160" cy="118" r="9"/><circle cx="124" cy="155" r="8"/><circle cx="198" cy="161" r="8"/><circle cx="98" cy="213" r="8"/><circle cx="162" cy="217" r="9"/><circle cx="221" cy="218" r="8"/><circle cx="123" cy="274" r="8"/><circle cx="197" cy="274" r="8"/></g>
-<path d="M109 129c24 14 74 14 98 0M96 192c31 17 98 17 129 0M85 255c36 20 129 20 165 0" fill="none" stroke="#d74254" stroke-width="6" stroke-linecap="round"/>
-<g>
-<rect x="52" y="354" width="62" height="48" rx="8" fill="#d74254"/><rect x="77" y="354" width="12" height="48" fill="#f7e3a1"/><rect x="52" y="372" width="62" height="12" fill="#f7e3a1"/>
-<path d="M84 354c0-16 19-18 23-7 8-9 24-6 24 8-1 12-13 17-23 17-12 0-24-5-24-18z" fill="#f7e3a1"/>
-<rect x="130" y="362" width="56" height="40" rx="8" fill="#f7e3a1"/><rect x="152" y="362" width="10" height="40" fill="#2f7b4d"/><rect x="130" y="377" width="56" height="10" fill="#2f7b4d"/>
-<path d="M158 362c0-14 16-16 20-7 8-7 20-5 20 7 0 10-10 15-20 15s-20-5-20-15z" fill="#2f7b4d"/>
-<rect x="201" y="344" width="67" height="58" rx="8" fill="#5a9dde"/><rect x="228" y="344" width="13" height="58" fill="#fff4c7"/><rect x="201" y="367" width="67" height="13" fill="#fff4c7"/>
-<path d="M234 344c0-18 22-19 27-8 9-10 28-6 28 8 0 13-15 19-27 19-14 0-28-6-28-19z" fill="#fff4c7"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 530" role="img" aria-label="飾りとプレゼントがいっぱいのクリスマスツリー">
+<defs>
+<linearGradient id="pine" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#49a36c"/><stop offset=".4" stop-color="#146a43"/><stop offset="1" stop-color="#074631"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5be"/><stop offset=".5" stop-color="#f8cd5f"/><stop offset="1" stop-color="#ae7727"/></linearGradient>
+<linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fa6070"/><stop offset="1" stop-color="#ac173b"/></linearGradient>
+<filter id="drop" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="9" stdDeviation="9" flood-color="#081c17" flood-opacity=".47"/></filter>
+</defs>
+<g fill="#ffe59b" opacity=".8"><path d="M52 103l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/><path d="M281 140l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/><circle cx="36" cy="253" r="4"/><circle cx="300" cy="284" r="4"/><circle cx="54" cy="375" r="3"/></g>
+<g filter="url(#drop)">
+<path d="M151 340h32v77h-32z" fill="#956341"/>
+<path d="M164 64l-60 106h32l-72 100h37L35 377q133 34 263 0l-65-107h37l-73-100h33Z" fill="url(#pine)" stroke="#0b4c36" stroke-width="6" stroke-linejoin="round"/>
+<path d="M164 83l-46 88h23l-59 100h35l-61 96" fill="none" stroke="#a5e0b5" stroke-width="8" opacity=".32"/>
+<path d="M164 85l48 87h-25l60 102h-34l65 95" fill="none" stroke="#073c2c" stroke-width="12" opacity=".5"/>
+<!-- snowy bough tips -->
+<path d="M108 169q32 13 55-7t64 8M73 268q44 16 82-6t105 8M47 371q69 20 120-2t121 5" stroke="#fffaf2" stroke-width="8" opacity=".9" fill="none" stroke-linecap="round"/>
+<!-- winding ribbon -->
+<path d="M116 151q57 28 98 3 36-12 28 16-50 32-129 29-47 13-39 44 101 30 178-2 32 12 11 32-116 46-191 19-40 13-29 35 132 54 244 1" fill="none" stroke="url(#gold)" stroke-width="15" stroke-linecap="round"/>
+<path d="M116 151q57 28 98 3 36-12 28 16-50 32-129 29-47 13-39 44 101 30 178-2 32 12 11 32-116 46-191 19-40 13-29 35 132 54 244 1" fill="none" stroke="#fff8c7" stroke-width="2" opacity=".78"/>
+<!-- star -->
+<path d="M164 27l17 34 37 6-27 25 7 37-34-18-34 18 7-37-27-25 37-6z" fill="url(#gold)" stroke="#fff2b2" stroke-width="5"/>
+<path d="M164 33v67M132 70h64" stroke="#fff8d2" stroke-width="5" opacity=".85"/>
+<!-- baubles -->
+<g stroke="#fff3c0" stroke-width="3">
+<circle cx="136" cy="148" r="13" fill="#c92c43"/><circle cx="192" cy="177" r="13" fill="#ffda76"/>
+<circle cx="112" cy="239" r="15" fill="#f7c457"/><circle cx="216" cy="247" r="15" fill="#d42c45"/>
+<circle cx="166" cy="285" r="12" fill="#fff1c4"/><circle cx="91" cy="339" r="16" fill="#cc3447"/><circle cx="228" cy="344" r="16" fill="#edc75b"/>
 </g>
-<g fill="#ffe599" opacity=".95"><circle cx="49" cy="110" r="5"/><circle cx="273" cy="126" r="5"/><circle cx="40" cy="209" r="4"/><circle cx="282" cy="245" r="5"/><circle cx="70" cy="301" r="5"/><circle cx="256" cy="311" r="4"/><circle cx="61" cy="430" r="5"/><circle cx="261" cy="425" r="6"/></g>
+<g fill="#fff" opacity=".84"><circle cx="132" cy="144" r="4"/><circle cx="188" cy="174" r="4"/><circle cx="108" cy="235" r="4"/><circle cx="211" cy="242" r="4"/><circle cx="87" cy="334" r="4"/><circle cx="223" cy="339" r="4"/></g>
+<!-- holly ornaments -->
+<path d="M143 223q-24-16-22 8q20 11 22-8M152 224q14-22 23-5q-10 20-23 5" fill="#81c98e"/><circle cx="146" cy="230" r="6" fill="#d32235"/>
+<!-- gift boxes -->
+<rect x="23" y="389" width="107" height="95" rx="8" fill="url(#red)" stroke="#ffe4a0" stroke-width="5"/><path d="M70 389v95M23 424h107" stroke="url(#gold)" stroke-width="17"/>
+<path d="M74 389q-34-23-34-3 14 22 34 3 27-28 34-6-5 19-34 6z" fill="url(#gold)"/>
+<rect x="125" y="408" width="91" height="81" rx="8" fill="#237f59" stroke="#f3ce7a" stroke-width="5"/><path d="M170 408v81M125 439h91" stroke="#f4d885" stroke-width="14"/>
+<path d="M171 408q-26-27-31-5 5 19 31 5 28-23 32-6-7 20-32 6z" fill="url(#gold)"/>
+<rect x="210" y="380" width="101" height="105" rx="9" fill="#f5e9ce" stroke="#d8b46c" stroke-width="5"/>
+<path d="M256 380v105M210 423h101" stroke="url(#red)" stroke-width="16"/>
+<path d="M259 380q-34-25-38-5 12 20 38 5 33-28 37-7-7 23-37 7z" fill="url(#red)"/>
+<!-- candy cane -->
+<path d="M247 160q23-30 36-7 10 19-13 36l-26 28" fill="none" stroke="#fff9e8" stroke-width="16" stroke-linecap="round"/>
+<path d="M245 174l12 11M273 151l10 11M250 207l11-10" fill="none" stroke="#db3446" stroke-width="8"/>
+</g>
 </svg>
