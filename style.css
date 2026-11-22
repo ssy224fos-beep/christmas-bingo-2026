@@ -14,3 +14,8 @@
 .site-header .graphic-page-title{margin:0;display:flex;align-items:center;justify-content:center;height:62px;line-height:1}
 .site-header .graphic-page-title .title-image{display:block;width:min(760px,95%);height:62px;object-fit:contain;filter:drop-shadow(0 4px 5px rgba(35,18,20,.2))}
 .card-topline .card-title-graphic{display:block;flex:1 1 auto;min-width:0;max-width:calc(100% - 52px);height:32px;object-fit:contain;object-position:left center}
+
+/* Card title: larger graphic, centered independently of its number. */
+.card-topline{position:relative;justify-content:center;min-height:47px;margin-bottom:5px}
+.card-topline .card-title-graphic{flex:0 0 auto;width:calc(100% - 14px);max-width:none;height:44px;object-fit:contain;object-position:center}
+.card-topline .card-number{position:absolute;right:0;top:34px;z-index:1;font-size:11px;background:#fff8e6;border-radius:3px;padding:0 2px}
