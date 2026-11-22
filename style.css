@@ -138,3 +138,67 @@
   .roulette-screen .game-board .game-stage-shell{display:grid}
   .roulette-screen .game-board .game-stage-shell > .stage-side-art{display:flex}
 }
+
+/* 2026-11-23: taller roulette and equally scaled character artwork.
+   Preserve the 1:2:1 column ratio at every viewport size. */
+.roulette-screen .game-board{
+  --game-illustration-size:clamp(178px,29vh,300px);
+  padding-top:10px;
+  padding-bottom:8px;
+}
+.roulette-screen .game-board .game-stage-shell{
+  grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);
+  min-height:0;
+}
+.roulette-screen .game-board .game-stage-shell > .game-stage{
+  min-height:0;
+  height:100%;
+  max-height:100%;
+}
+.roulette-screen .game-board .game-stage .spinner{
+  height:min(410px,94%);
+  max-height:94%;
+  inset:auto 3%;
+  top:50%;
+  transform:translateY(-50%);
+}
+.roulette-screen .game-board .game-stage .spin-item{
+  height:var(--spin-item-height,250px);
+  gap:8px;
+}
+.roulette-screen .game-board .game-stage .spin-item img,
+.roulette-screen .game-board .game-stage .win-panel img,
+.roulette-screen .game-board .game-stage-shell > .stage-side-art img{
+  display:block;
+  width:100%;
+  height:var(--game-illustration-size);
+  max-height:75%;
+  max-width:96%;
+  object-fit:contain;
+}
+.roulette-screen .game-board .game-stage .spin-item img{
+  max-height:76%;
+}
+.roulette-screen .game-board .game-stage .win-panel img{
+  max-height:68%;
+}
+.roulette-screen .game-board .game-stage-shell > .stage-side-art img{
+  max-height:75%;
+}
+.roulette-screen .game-board .game-stage .win-panel{
+  gap:8px;
+}
+.roulette-screen .game-board .game-stage .spin-item span{
+  font-size:clamp(20px,2.3vw,30px);
+}
+.roulette-screen .game-board .game-controls{
+  margin-top:8px;
+  margin-bottom:5px;
+}
+@media(max-height:650px){
+  .roulette-screen .game-board{--game-illustration-size:clamp(120px,26vh,220px)}
+  .roulette-screen .game-board .game-stage .spinner{
+    height:min(355px,94%);
+  }
+  .roulette-screen .game-board .game-stage .spin-item img{max-height:71%}
+}
