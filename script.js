@@ -321,8 +321,10 @@ function drawCardDom(card) {
   root.replaceChildren();
   const top = document.createElement("div");
   top.className = "card-topline";
-  const title = document.createElement("h3");
-  title.textContent = "🎄 CHRISTMAS BINGO!";
+  const title = document.createElement("img");
+  title.className = "card-title-graphic";
+  title.src = "./assets/card-title.svg";
+  title.alt = "CHRISTMAS BINGO!";
   const number = document.createElement("span");
   number.className = "card-number";
   number.textContent = "No." + String(card.number).padStart(3,"0");
@@ -369,6 +371,15 @@ function addCard() {
   renderCards();
 }
 
+let printTitleImage=null;
+function loadPrintTitleImage() {
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>resolve(img);
+    img.onerror=()=>reject(new Error("card-title.svg could not load"));
+    img.src="./assets/card-title.svg";
+  });
+}
 function roundRect(ctx,x,y,w,h,r,fill,stroke,lineWidth=1) {
   ctx.beginPath();ctx.roundRect(x,y,w,h,r);
   if(fill){ctx.fillStyle=fill;ctx.fill();}
@@ -390,10 +401,8 @@ function paintPrintableCard(ctx,card,x,y,w,h) {
   ctx.save();ctx.translate(x,y);
   roundRect(ctx,1,1,w-2,h-2,19,"#fff7e6","#c43848",11);
   roundRect(ctx,12,12,w-24,h-24,13,null,"#efd080",7);
-  ctx.fillStyle="#bd2f3f";
-  ctx.textBaseline="middle";ctx.textAlign="left";
-  fitFont(ctx,"🎄 CHRISTMAS BINGO!",w-260,43,34,"900");
-  ctx.fillText("🎄 CHRISTMAS BINGO!",38,74);
+  // Draw the same decorative title graphic in the printed PDF.
+  if (printTitleImage) containImage(ctx,printTitleImage,34,25,w-238,94);
   ctx.textAlign="right";ctx.fillStyle="#246342";
   ctx.font="bold 25px Meiryo,sans-serif";
   ctx.fillText("No."+String(card.number).padStart(3,"0"),w-38,74);
@@ -462,6 +471,8 @@ function buildPdf(jpegs) {
 }
 async function exportPdf() {
   if (!state.cards.length) return;
+  try { printTitleImage = await loadPrintTitleImage(); }
+  catch(error) { toast("タイトル画像を読み込めませんでした"); return; }
   const button=$("#pdfBtn");
   button.disabled=true;button.textContent="PDFを作成中…";
   try {
