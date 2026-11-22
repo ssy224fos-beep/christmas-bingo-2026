@@ -5,7 +5,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const state = {
   artworks: [], remaining: [], draws: [], cards: [], currentCard: 0,
-  spinning: false, displayMode: "text", order: "fixed", sound: false,
+  spinning: false, displayMode: "image", order: "fixed", sound: false,
   audio: null, spinTimer: null, drumTimer: null, celebrationTimer: null,
   toastTimer: null
 };
@@ -70,9 +70,9 @@ async function loadZip(file) {
     state.draws = [];
     state.cards = [];
     state.currentCard = 0;
-    state.displayMode = "text";
+    state.displayMode = "image";
     state.order = "fixed";
-    $$("[data-mode]").forEach(el => el.classList.toggle("is-selected", el.dataset.mode === "text"));
+    $$("[data-mode]").forEach(el => el.classList.toggle("is-selected", el.dataset.mode === "image"));
     $$("[data-order]").forEach(el => el.classList.toggle("is-selected", el.dataset.order === "fixed"));
     renderHistory();
     renderCards();
