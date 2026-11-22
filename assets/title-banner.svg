@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="172" viewBox="0 0 1100 172" role="img" aria-label="CHRISTMAS BINGO!">
+<defs><linearGradient id="r" x2="0" y2="1"><stop stop-color="#e34a62"/><stop offset="1" stop-color="#ad2e44"/></linearGradient><filter id="s" x="-15%" y="-35%" width="130%" height="185%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#2b2025" flood-opacity=".42"/></filter></defs>
+<g filter="url(#s)"><path d="M91 17H1009A59 59 0 0 1 1068 76v20a59 59 0 0 1-59 59H91A59 59 0 0 1 32 96V76A59 59 0 0 1 91 17Z" fill="url(#r)" stroke="#ffe8a3" stroke-width="11"/><path d="M96 34h908a42 42 0 0 1 42 42v16a42 42 0 0 1-42 42H96a42 42 0 0 1-42-42V76a42 42 0 0 1 42-42z" fill="none" stroke="#fff5df" stroke-width="3" opacity=".6"/></g>
+<g fill="#fff0aa" stroke="#fff8e4" stroke-width="2"><path d="M91 51l8 18 19 2-14 12 4 19-17-10-17 10 4-19-14-12 19-2z"/><path d="M1009 51l8 18 19 2-14 12 4 19-17-10-17 10 4-19-14-12 19-2z"/></g>
+<text x="550" y="114" font-family="Trebuchet MS, Arial Rounded MT Bold, sans-serif" font-weight="900" font-size="69" text-anchor="middle" letter-spacing="1" stroke="#fff5dc" stroke-width="9" stroke-linejoin="round" paint-order="stroke fill" fill="#24644b">CHRISTMAS BINGO!</text>
+<g fill="#fff1c3" opacity=".95"><circle cx="135" cy="44" r="4"/><circle cx="968" cy="44" r="4"/><circle cx="143" cy="116" r="3"/><circle cx="960" cy="116" r="3"/></g>
+</svg>
