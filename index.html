@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#792631">
+  <title>CHRISTMAS BINGO! 2026</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./vendor/jszip.min.js"></script>
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <div class="snow-layer" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="title-sparkle" aria-hidden="true">✦ ❄ ✦</div>
+    <h1><span aria-hidden="true">✦</span> CHRISTMAS BINGO! <span aria-hidden="true">✦</span></h1>
+    <p class="subtitle">❄ MERRY CHRISTMAS 2026 ❄</p>
+    <div class="header-actions">
+      <nav class="tabs" aria-label="画面切り替え">
+        <button class="tab is-active" type="button" data-tab="roulette" aria-selected="true">🎁 ルーレット</button>
+        <button class="tab" type="button" data-tab="cards" aria-selected="false">🎄 カード作成</button>
+      </nav>
+      <button type="button" class="header-btn" id="fullscreenBtn" title="画面を拡大">⛶ <span>画面拡大</span></button>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="screen roulette-screen is-active" id="rouletteScreen" aria-label="ルーレット">
+      <div class="game-board">
+        <div class="game-label">❄ 抽選結果 ❄</div>
+        <div id="game-stage" class="game-stage">
+          <div id="emptyStage" class="stage-message">
+            <div class="stage-emoji" aria-hidden="true">🎄</div>
+            <p>クリスマスイラストを読み込んでください</p>
+            <button type="button" class="btn gold" id="stageLoadBtn">📁 ZIPファイルを選択</button>
+          </div>
+          <div id="spinner" class="spinner is-hidden" aria-label="抽選中">
+            <div class="spinner-list" id="spinnerList"></div>
+            <div class="spinner-marker" aria-hidden="true"></div>
+          </div>
+          <div id="winPanel" class="win-panel is-hidden" aria-live="polite">
+            <img id="winImage" alt="" src="" draggable="false">
+            <div id="winTitle" class="win-title"></div>
+          </div>
+          <div id="readyStage" class="ready-stage is-hidden" aria-live="polite">
+            <span aria-hidden="true">🎁</span>
+            <p>準備完了！ スタートを押してください</p>
+          </div>
+          <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+        </div>
+        <div class="game-controls">
+          <button type="button" class="btn green" id="startBtn" disabled>▶ スタート</button>
+          <button type="button" class="btn red" id="resetBtn" disabled>↻ リセット</button>
+          <button type="button" class="btn amber" id="soundBtn" aria-pressed="false">♫ 効果音 OFF</button>
+        </div>
+        <p class="game-caption" id="gameCaption">ルーレットは20種類を重複せずに抽選します</p>
+      </div>
+      <aside class="history-panel" aria-label="抽選履歴">
+        <h2>✦ 抽選履歴 ✦</h2>
+        <div class="status-line">
+          <span>抽選済み <strong id="drawnCount">0</strong></span>
+          <span>残り <strong id="remainingCount">0</strong></span>
+        </div>
+        <p class="control-label">表示形式</p>
+        <div class="segmented" role="group" aria-label="表示形式">
+          <button type="button" data-mode="image">イラスト</button>
+          <button type="button" data-mode="text" class="is-selected">タイトル</button>
+        </div>
+        <p class="control-label">並び順</p>
+        <div class="segmented" role="group" aria-label="並び順">
+          <button type="button" data-order="fixed" class="is-selected">固定順</button>
+          <button type="button" data-order="drawn">抽選順</button>
+        </div>
+        <div id="historyList" class="history-list text-mode"></div>
+      </aside>
+    </section>
+
+    <section class="screen cards-screen" id="cardsScreen" aria-label="ビンゴカード作成">
+      <div class="cards-sidebar">
+        <h2>🎄 カード作成</h2>
+        <p>20種類から16種類をランダムに選び、4×4のカードを作成します。イラストとタイトル、名前記入欄、通し番号付きです。</p>
+        <label for="cardCountInput">作成枚数</label>
+        <div class="count-row"><input id="cardCountInput" type="number" min="1" max="200" value="10" inputmode="numeric"><span>枚</span></div>
+        <button type="button" class="btn green full" id="generateBtn" disabled>一括生成</button>
+        <button type="button" class="btn gold full" id="addCardBtn" disabled>＋ 1枚追加</button>
+        <button type="button" class="btn light full" id="regenerateBtn" disabled>すべて再生成</button>
+        <div class="hr"></div>
+        <p id="cardsCountLabel">生成済み：0枚</p>
+        <button type="button" class="btn red full" id="pdfBtn" disabled>📄 PDFを出力</button>
+        <p class="hint">PDFはA4横向きに2枚ずつ配置し、中央の点線で切り分けられます。外周には印刷余白を設けます。</p>
+      </div>
+      <div class="cards-preview-panel">
+        <h2>カードプレビュー</h2>
+        <div id="cardPosition" class="card-position">まだカードがありません</div>
+        <div class="preview-viewport" id="previewViewport">
+          <p id="previewEmpty" class="preview-placeholder">ZIPを読み込み、枚数を指定してカードを生成してください。</p>
+          <div id="previewCard" class="bingo-card is-hidden"></div>
+        </div>
+        <div class="pager">
+          <button type="button" id="prevCardBtn" disabled aria-label="前のカード">◀ 前へ</button>
+          <span id="pagerText">0 / 0</span>
+          <button type="button" id="nextCardBtn" disabled aria-label="次のカード">次へ ▶</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="welcomeOverlay" class="welcome-overlay" role="dialog" aria-labelledby="welcomeTitle" aria-modal="true">
+    <div class="welcome-card">
+      <h2 id="welcomeTitle">🎄 CHRISTMAS BINGO! 🎄</h2>
+      <p>遊ぶ前に、端末に保存した <strong>クリスマス.zip</strong> を読み込んでください。</p>
+      <p class="welcome-sub">画像は端末内で読み込み、サーバーにはアップロードされません。</p>
+      <button type="button" class="btn gold" id="loadBtn">📁 イラストを読み込む</button>
+      <p id="loadMessage" class="load-message" role="status">PNG画像が16枚以上入ったZIPファイルを選択してください。</p>
+    </div>
+  </div>
+  <input type="file" id="zipFileInput" accept=".zip,application/zip,application/x-zip-compressed" hidden>
+
+  <div id="celebration" class="celebration is-hidden" role="status" aria-live="assertive">
+    <div id="celebrationStars" class="celebration-stars" aria-hidden="true"></div>
+    <div class="celebration-content"><span>🎉 ❄ 🎁 ❄ 🎉</span><h2>MERRY CHRISTMAS!</h2><p>すべての抽選が終了しました！</p></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
