@@ -155,9 +155,26 @@ function renderSpinner() {
 
 function audioContext() {
   if (!state.sound) return null;
-  if (!state.audio) state.audio = new (window.AudioContext || window.webkitAudioContext)();
-  if (state.audio.state === "suspended") state.audio.resume().catch(() => {});
+  if (!state.audio) {
+    const AudioAPI = window.AudioContext || window.webkitAudioContext;
+    if (!AudioAPI) return null;
+    state.audio = new AudioAPI();
+  }
   return state.audio;
+}
+async function ensureAudioReady() {
+  const ctx = audioContext();
+  if (!ctx) throw new Error("このブラウザは効果音に対応していません");
+  // Resume while handling a real user interaction. Browsers, especially Safari,
+  // may begin with a suspended AudioContext until a click/tap unlocks it.
+  if (ctx.state !== "running") await ctx.resume();
+  if (ctx.state !== "running") throw new Error("ブラウザが音声の再生を許可していません");
+  return ctx;
+}
+function updateSoundButton() {
+  const button = $("#soundBtn");
+  button.textContent = state.sound ? "♫ 効果音 ON" : "♫ 効果音 OFF";
+  button.setAttribute("aria-pressed", String(state.sound));
 }
 function tone(freq, startDelay, duration, volume = 0.045, shape = "sine") {
   const ctx = audioContext();
@@ -183,7 +200,7 @@ function drumTick() {
   oscillator.type = "triangle";
   oscillator.frequency.setValueAtTime(135, start);
   oscillator.frequency.exponentialRampToValueAtTime(48, start + .09);
-  gain.gain.setValueAtTime(.12, start);
+  gain.gain.setValueAtTime(.24, start);
   gain.gain.exponentialRampToValueAtTime(.001, start + .1);
   oscillator.connect(gain).connect(ctx.destination);
   oscillator.start(start);
@@ -242,6 +259,15 @@ function showCelebration() {
 async function spin() {
   if (state.spinning || !state.remaining.length || !state.artworks.length) return;
   state.spinning = true;
+  if (state.sound) {
+    try { await ensureAudioReady(); }
+    catch (error) {
+      stopDrums();
+      state.sound = false;
+      updateSoundButton();
+      toast("効果音が使えません: " + error.message);
+    }
+  }
   const winnerPosition = randomInt(state.remaining.length);
   const winnerId = state.remaining[winnerPosition];
   const winArt = byId(winnerId);
@@ -530,12 +556,28 @@ function init() {
   }));
   $("#startBtn").addEventListener("click",spin);
   $("#resetBtn").addEventListener("click",resetDraw);
-  $("#soundBtn").addEventListener("click",()=>{
-    state.sound=!state.sound;
-    $("#soundBtn").textContent=state.sound?"♫ 効果音 ON":"♫ 効果音 OFF";
-    $("#soundBtn").setAttribute("aria-pressed",String(state.sound));
-    if (state.sound) {audioContext();tone(600,0,.13,.02);}
-    else stopDrums();
+  $("#soundBtn").addEventListener("click",async ()=>{
+    if (state.sound) {
+      state.sound = false;
+      stopDrums();
+      updateSoundButton();
+      return;
+    }
+    state.sound = true;
+    updateSoundButton();
+    try {
+      await ensureAudioReady();
+      // An audible confirmation lets the operator check sound before the game.
+      if (!state.sound) return;
+      tone(523,0,.22,.13,"triangle");
+      tone(784,.16,.30,.12,"sine");
+      if (state.spinning && !state.drumTimer) startDrums();
+    } catch (error) {
+      state.sound = false;
+      stopDrums();
+      updateSoundButton();
+      toast("効果音を再生できません: " + error.message);
+    }
   });
   $("#generateBtn").addEventListener("click",()=>{
     const count=Number($("#cardCountInput").value);
