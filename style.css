@@ -202,3 +202,35 @@
   }
   .roulette-screen .game-board .game-stage .spin-item img{max-height:71%}
 }
+
+/* Adaptive history width for wide desktops without crowding the roulette.
+   >1600px: 522px (~1.5x original 348px)
+   1200–1599px: fluid 430–522px
+   1101–1199px: fluid ~331–413px
+   <=1100px: keep the original 290px setting and portrait stacking. */
+@media (min-width:1101px) {
+  .roulette-screen > .history-panel {
+    flex:0 0 clamp(330px, calc(83.333vw - 587.5px), 430px);
+    width:clamp(330px, calc(83.333vw - 587.5px), 430px);
+  }
+}
+@media (min-width:1200px) {
+  .roulette-screen > .history-panel {
+    flex-basis:clamp(430px, calc(23vw + 154px), 522px);
+    width:clamp(430px, calc(23vw + 154px), 522px);
+  }
+}
+@media (min-width:1350px) {
+  .roulette-screen .history-list.image-mode {
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+  .roulette-screen .history-list.image-mode .history-item.image-item {
+    min-width:0;
+    padding:5px 2px;
+  }
+  .roulette-screen .history-list.image-mode .history-item.image-item img {
+    width:min(72px,100%);
+    height:72px;
+    object-fit:contain;
+  }
+}
