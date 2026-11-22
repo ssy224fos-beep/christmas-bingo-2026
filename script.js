@@ -402,11 +402,11 @@ function paintPrintableCard(ctx,card,x,y,w,h) {
   roundRect(ctx,1,1,w-2,h-2,19,"#fff7e6","#c43848",11);
   roundRect(ctx,12,12,w-24,h-24,13,null,"#efd080",7);
   // Draw the same decorative title graphic in the printed PDF.
-  if (printTitleImage) containImage(ctx,printTitleImage,34,25,w-238,94);
+  if (printTitleImage) containImage(ctx,printTitleImage,34,17,w-68,112);
   ctx.textAlign="right";ctx.fillStyle="#246342";
   ctx.font="bold 25px Meiryo,sans-serif";
-  ctx.fillText("No."+String(card.number).padStart(3,"0"),w-38,74);
-  const left=34,right=34, gap=10, top=137, bottom=119;
+  ctx.fillText("No."+String(card.number).padStart(3,"0"),w-38,136);
+  const left=34,right=34, gap=10, top=157, bottom=119;
   const cw=(w-left-right-3*gap)/4;
   const ch=(h-top-bottom-3*gap)/4;
   card.items.forEach((id,i)=>{
