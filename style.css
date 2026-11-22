@@ -19,3 +19,10 @@
 .card-topline{position:relative;justify-content:center;min-height:47px;margin-bottom:5px}
 .card-topline .card-title-graphic{flex:0 0 auto;width:calc(100% - 14px);max-width:none;height:44px;object-fit:contain;object-position:center}
 .card-topline .card-number{position:absolute;right:0;top:34px;z-index:1;font-size:11px;background:#fff8e6;border-radius:3px;padding:0 2px}
+
+/* 4x4 checkerboard: define colors by grid position, independent of JS class. */
+.card-grid > .card-cell{background-color:#fffdf7 !important}
+.card-grid > .card-cell:nth-child(8n + 2),
+.card-grid > .card-cell:nth-child(8n + 4),
+.card-grid > .card-cell:nth-child(8n + 5),
+.card-grid > .card-cell:nth-child(8n + 7){background-color:#cde6d1 !important}
