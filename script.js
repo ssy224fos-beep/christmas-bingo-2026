@@ -357,10 +357,13 @@ function drawCardDom(card) {
   top.append(title,number);
   const grid = document.createElement("div");
   grid.className = "card-grid";
-  card.items.forEach(id => {
+  card.items.forEach((id, i) => {
     const art = byId(id);
+    const row = Math.floor(i / 4);
+    const col = i % 4;
     const cell = document.createElement("div");
     cell.className = "card-cell";
+    if ((row + col) % 2 === 1) cell.classList.add("checker-alt");
     const img = document.createElement("img");
     img.src = art.url;
     img.alt = art.name;
@@ -438,7 +441,7 @@ function paintPrintableCard(ctx,card,x,y,w,h) {
   card.items.forEach((id,i)=>{
     const art=byId(id),col=i%4,row=Math.floor(i/4);
     const sx=left+col*(cw+gap),sy=top+row*(ch+gap);
-    roundRect(ctx,sx,sy,cw,ch,9,i%2===0?"#fffdfa":"#edf5e8","#e6b45e",3);
+    roundRect(ctx,sx,sy,cw,ch,9,(row+col)%2===0?"#fffdfa":"#edf5e8","#e6b45e",3);
     containImage(ctx,art.img,sx+13,sy+15,cw-26,ch-63);
     ctx.textAlign="center";ctx.textBaseline="alphabetic";ctx.fillStyle="#243e2d";
     fitFont(ctx,art.name,cw-8,23,14,"bold");
