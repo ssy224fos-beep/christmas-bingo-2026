@@ -7,7 +7,7 @@
   <title>CHRISTMAS BINGO! 2026</title>
   <link rel="stylesheet" href="./style.css?v=checkerboard-20261122b">
   <script defer src="./vendor/jszip.min.js"></script>
-  <script defer src="./script.js?v=checkerboard-20261122b"></script>
+  <script defer src="./script.js?v=history-images-default-20261123"></script>
 </head>
 <body>
   <div class="snow-layer" aria-hidden="true"></div>
@@ -63,15 +63,15 @@
         </div>
         <p class="control-label">表示形式</p>
         <div class="segmented" role="group" aria-label="表示形式">
-          <button type="button" data-mode="image">イラスト</button>
-          <button type="button" data-mode="text" class="is-selected">タイトル</button>
+          <button type="button" data-mode="image" class="is-selected">イラスト</button>
+          <button type="button" data-mode="text">タイトル</button>
         </div>
         <p class="control-label">並び順</p>
         <div class="segmented" role="group" aria-label="並び順">
           <button type="button" data-order="fixed" class="is-selected">固定順</button>
           <button type="button" data-order="drawn">抽選順</button>
         </div>
-        <div id="historyList" class="history-list text-mode"></div>
+        <div id="historyList" class="history-list image-mode"></div>
       </aside>
     </section>
 
