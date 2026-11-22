@@ -9,7 +9,7 @@ const state = {
   audio: null, spinTimer: null, drumTimer: null, celebrationTimer: null,
   toastTimer: null
 };
-const SPIN_ITEM_HEIGHT = 250;
+// Spin item height follows the rendered spinner's responsive height.
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const randomInt = (length) => Math.floor(Math.random() * length);
 const byId = (key) => state.artworks.find(item => item.id === key);
@@ -275,12 +275,15 @@ async function spin() {
   renderSpinner();
   setStage("spinner");
   const list = $("#spinnerList");
+  // Use the actual rendered slot height: fixed pixel steps break when CSS scales.
+  const spinItemHeight = Math.max(1, Math.round($("#spinner").getBoundingClientRect().height));
+  list.style.setProperty("--spin-item-height", spinItemHeight + "px");
   const index = (5 + randomInt(3)) * state.artworks.length + state.artworks.findIndex(a => a.id === winnerId);
   const duration = 4500 + Math.random()*1500;
   // Force layout between the reset and the transition.
   void list.offsetHeight;
   list.style.transition = "transform " + duration + "ms cubic-bezier(.12,.85,.18,1)";
-  list.style.transform = "translateY(-" + (index*SPIN_ITEM_HEIGHT) + "px)";
+  list.style.transform = "translateY(-" + (index * spinItemHeight) + "px)";
   startDrums();
   await sleep(duration + 110);
   stopDrums();
